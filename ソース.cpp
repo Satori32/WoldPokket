@@ -2,6 +2,7 @@
 #include <map>
 #include <cstdint>
 #include <functional>
+#include <string>
 
 template<class T>
 class List {
@@ -35,8 +36,9 @@ struct Data
 	List<Image> Images;
 	List<Sound> Soubds;
 	List<Area> Areas;
-	//template<class... T> using F = std::map < std::string, std::function<bool(T&...)>;
-	//List<F<>> Functions;
+	List<std::string> Texts;
+	template<class... T> using F = std::map < std::string, std::function<bool* (T&...)>>;
+	List<F<>> Functions;
 };
 
 int main() {
