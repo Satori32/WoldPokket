@@ -3,7 +3,8 @@
 #include <cstdint>
 #include <functional>
 #include <string>
-
+#include <unordered_map>
+/** /
 template<class T>
 class List {
 public:
@@ -23,13 +24,22 @@ public:
 protected:
 	ListT L;
 };
-
+/**/
+template<class T> using List = std::map<std::intmax_t, T>;
 /*are you need more?*/
 class Image {};
 class Sound {};
 class Area {};
 /**/
 
+enum class Tags {
+	None,
+	A,
+	B,
+	C,
+};
+
+template<class Idx,class T> using TagedList = std::unordered_map<Idx, T>;
 
 struct Data
 {
@@ -41,8 +51,13 @@ struct Data
 	List<F<>> Functions;
 };
 
+
+
 int main() {
 	List<Data> WorldPokket;
 
 	WorldPokket[1].Images[0];
+
+	TagedList<Tags, Data> TL;
+	TL[Tags::A].Images[0];
 }
