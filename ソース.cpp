@@ -51,6 +51,15 @@ struct Data
 	List<F<>> Functions;
 };
 
+enum class TagF {
+	None = 0,
+	A,
+	B,
+	C,
+};
+
+template<class T> using TList = TagedList<TagF, T>;
+template<class T,class I=std::intmax_t> using FPocket = TList<TagedList<I,T>>;
 
 
 int main() {
@@ -60,4 +69,8 @@ int main() {
 
 	TagedList<Tags, Data> TL;
 	TL[Tags::A].Images[0];
+
+	FPocket<int> FormersPocket;
+
+	FormersPocket[TagF::A][11]=0xdeadbeef;
 }
